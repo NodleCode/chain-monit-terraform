@@ -16,10 +16,16 @@ provider "google" {
   zone    = "us-central1-c"
 }
 
+resource "google_compute_project_metadata" "default_project_metadata" {
+  metadata = {
+    ssh-keys = join("\n", [for user, key in var.public_ssh_keys_map : "${user}:${key}"])
+  }
+}
+
 data "template_file" "add_ssh_keys" {
   template = file("./scripts/add-ssh-web-app.yaml")
   vars = {
-    public_ssh_keys_list : jsonencode(var.public_ssh_keys_list)
+    // public_ssh_keys_list : jsonencode(var.public_ssh_keys_list)
   }
 }
 
@@ -50,11 +56,27 @@ resource "google_compute_instance" "vm_instance_one" {
     }
   }
 
-  metadata = {
-    user-data = data.template_file.add_ssh_keys.rendered
-  }
+  # metadata = {
+  #   # user-data = data.template_file.add_ssh_keys.rendered
+  #   ssh-keys = join("\n", [for user, key in var.public_ssh_keys_map : "${user}:${key}"])
+  # }
 }
 
 resource "google_compute_address" "jenkins_static_ip" {
   name = "jenkins-static-ip"
+}
+
+resource "google_compute_firewall" "default" {
+  name    = "test-firewall"
+  network = google_compute_network.vpc_network_one.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "80", "8080", "443"]
+  }
+
+}
+
+resource "google_storage_bucket" "chain_backup_bucket" {
+  name = "chain_backup_bucket"
 }

@@ -1,9 +1,4 @@
 users:
   - default
   - name: terraform
-    gecos: terraform
-    primary_group: hashicorp
-    sudo: ALL=(ALL) NOPASSWD:ALL
     groups: users, admin
-    lock_passwd: false
-    ssh_authorized_keys: ${public_ssh_keys_list}
