@@ -16,11 +16,15 @@ resource "google_compute_instance" "instance_jenkins" {
     google_compute_address.jenkins_static_ip
   ]
 
+  metadata = {
+    startup-script = var.startup_script
+  }
+
   boot_disk {
     auto_delete = false
     initialize_params {
       # image = "ubuntu-2004-lts"
-      size = 80
+      # size = 1000
       type = "pd-ssd"
       labels = {
       }

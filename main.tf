@@ -33,8 +33,9 @@ module "vpc" {
 }
 
 module "jenkins" {
-  source   = "./modules/jenkins"
-  vpc_name = module.vpc.vpc_network_zero.name
+  source         = "./modules/jenkins"
+  vpc_name       = module.vpc.vpc_network_zero.name
+  startup_script = file("./scripts/chain_startup.sh")
 }
 
 module "chain" {
