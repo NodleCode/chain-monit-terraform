@@ -41,7 +41,7 @@ SyslogIdentifier=gateway
 WantedBy=multi-user.target
 EOF
 cd /usr/local/bin/
-wget https://storage.googleapis.com/nodlechain-artifacts/nodle-chain
+wget -O nodle-chain https://storage.googleapis.com/nofal-nodle-artifacts/chain/origin/tags/${CHAIN_TAG_VERSION}
 chmod +x /usr/local/bin/nodle-chain
 systemctl daemon-reload
 systemctl start nodle-gateway

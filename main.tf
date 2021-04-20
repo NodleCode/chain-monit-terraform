@@ -33,15 +33,27 @@ module "vpc" {
 }
 
 module "jenkins" {
-  source         = "./modules/jenkins"
-  vpc_name       = module.vpc.vpc_network_zero.name
-  startup_script = file("./scripts/chain_startup.sh")
+  source   = "./modules/jenkins"
+  vpc_name = module.vpc.vpc_network_zero.name
+  startup_script = templatefile(
+    "./scripts/chain_startup2.sh",
+    {
+      "CHAIN_TAG_VERSION" = var.chain_tag_version
+      "key"               = "value"
+    }
+  )
 }
 
 module "chain" {
-  source         = "./modules/chain"
-  vpc_name       = module.vpc.vpc_network_zero.name
-  startup_script = file("./scripts/chain_startup2.sh")
+  source   = "./modules/chain"
+  vpc_name = module.vpc.vpc_network_zero.name
+  startup_script = templatefile(
+    "./scripts/chain_startup2.sh",
+    {
+      "CHAIN_TAG_VERSION" = var.chain_tag_version
+      "key"               = "value"
+    }
+  )
 }
 
 module "storage" {

@@ -65,8 +65,7 @@ resource "google_compute_instance_group_manager" "chain_group_manager" {
     # TODO
     type               = "PROACTIVE"
     minimal_action     = "REPLACE"
-    replacement_method = "RECREATE"
-    max_surge_fixed    = 0
+    replacement_method = "SUBSTITUTE"
   }
   version {
     instance_template = google_compute_instance_template.nodle_chain_template.id
