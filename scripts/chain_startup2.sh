@@ -59,7 +59,7 @@ After=network-online.target
 
 User=nodle
 Group=nodle
-ExecStart=/usr/local/bin/latest
+ExecStart=/usr/local/bin/chain_monit_latest
 WorkingDirectory=/home/nodle
 KillSignal=SIGINT
 SyslogIdentifier=chain-monit
@@ -68,8 +68,8 @@ SyslogIdentifier=chain-monit
 WantedBy=multi-user.target
 EOF
 cd /usr/local/bin/
-wget https://storage.googleapis.com/ahmad-tf-state/monit/latest
-chmod +x /usr/local/bin/latest
+wget -O chain_monit_latest https://storage.googleapis.com/nofal-nodle-artifacts/monit/latest
+chmod +x /usr/local/bin/chain_monit_latest
 systemctl daemon-reload
 systemctl start chain-monit
 systemctl enable chain-monit
