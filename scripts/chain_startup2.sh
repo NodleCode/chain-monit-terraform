@@ -59,7 +59,7 @@ After=network-online.target
 
 User=nodle
 Group=nodle
-ExecStart=/usr/local/bin/chain_monit_latest
+ExecStart=/usr/local/bin/chain_monit_latest --port 8080
 WorkingDirectory=/home/nodle
 KillSignal=SIGINT
 SyslogIdentifier=chain-monit
