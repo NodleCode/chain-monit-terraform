@@ -46,3 +46,30 @@ chmod +x /usr/local/bin/nodle-chain
 systemctl daemon-reload
 systemctl start nodle-gateway
 systemctl enable nodle-gateway
+
+# monit runner
+cat <<EOF > /lib/systemd/system/chain-monit.service
+[Unit]
+Description=Monit Chain
+Wants=network-online.target
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+
+User=nodle
+Group=nodle
+ExecStart=/usr/local/bin/chain_monit_latest --port 8080
+WorkingDirectory=/home/nodle
+KillSignal=SIGINT
+SyslogIdentifier=chain-monit
+
+[Install]
+WantedBy=multi-user.target
+EOF
+cd /usr/local/bin/
+wget -O chain_monit_latest https://storage.googleapis.com/nofal-nodle-artifacts/monit/latest
+chmod +x /usr/local/bin/chain_monit_latest
+systemctl daemon-reload
+systemctl start chain-monit
+systemctl enable chain-monit

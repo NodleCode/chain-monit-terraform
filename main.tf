@@ -9,7 +9,7 @@ terraform {
 
   backend "gcs" {
     ## cant use vars here
-    bucket = "ahmad-tf-state"
+    bucket = "chain-tf-state"
     prefix = "terraform/state"
   }
 
@@ -36,7 +36,7 @@ module "jenkins" {
   source   = "./modules/jenkins"
   vpc_name = module.vpc.vpc_network_zero.name
   startup_script = templatefile(
-    "./scripts/chain_startup2.sh",
+    "./scripts/chain_startup.sh",
     {
       "CHAIN_TAG_VERSION" = var.chain_tag_version
       "key"               = "value"
@@ -48,7 +48,7 @@ module "chain" {
   source   = "./modules/chain"
   vpc_name = module.vpc.vpc_network_zero.name
   startup_script = templatefile(
-    "./scripts/chain_startup2.sh",
+    "./scripts/chain_startup.sh",
     {
       "CHAIN_TAG_VERSION" = var.chain_tag_version
       "key"               = "value"
