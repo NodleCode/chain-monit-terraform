@@ -14,8 +14,8 @@ resource "google_compute_network" "vpc_network_zero" {
   name = "nodle-chain-vpc"
 }
 
-resource "google_compute_firewall" "default" {
-  name    = "nodle-chain-firewall"
+resource "google_compute_firewall" "default_firewall_zero" {
+  name    = "nodle-firewall"
   network = google_compute_network.vpc_network_zero.name
 
   allow {
