@@ -1,7 +1,7 @@
 
-resource "google_compute_network" "default" {
-  name = "my-network"
-}
+#resource "google_compute_network" "default" {
+#  name = ""
+#}
 
 # resource "google_compute_subnetwork" "default" {
 #   name          = "my-subnet"
@@ -11,16 +11,16 @@ resource "google_compute_network" "default" {
 # }
 
 resource "google_compute_network" "vpc_network_zero" {
-  name = "terraform-network1"
+  name = "nodle-chain-vpc"
 }
 
 resource "google_compute_firewall" "default" {
-  name    = "nodle-firewall"
+  name    = "nodle-chain-firewall"
   network = google_compute_network.vpc_network_zero.name
 
   allow {
     protocol = "tcp"
-    ports    = ["22", "80", "8080", "443"]
+    ports    = ["22", "80", "8080", "443", "9944", "5555", "30333", "9933", "3389", "8081"]
   }
 
 }

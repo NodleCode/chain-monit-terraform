@@ -2,13 +2,13 @@
 ### network
 
 resource "google_compute_address" "jenkins_static_ip" {
-  name = "jenkins-static-ip"
+  name = "nodle-chain-jenkins-static-ip"
 }
 
 ### instance creation
 
 resource "google_compute_instance" "instance_jenkins" {
-  name                = "terraform-instance1"
+  name                = "nodle-chain-jenkins"
   machine_type        = "e2-standard-2"
   tags                = ["managment", "jenkins"]
   deletion_protection = true
@@ -23,9 +23,9 @@ resource "google_compute_instance" "instance_jenkins" {
   boot_disk {
     auto_delete = false
     initialize_params {
-      # image = "ubuntu-2004-lts"
-      # size = 1000
-      type = "pd-ssd"
+      image = "ubuntu-2004-lts"
+      size  = 1000
+      type  = "pd-ssd"
       labels = {
       }
     }
@@ -44,7 +44,7 @@ resource "google_compute_instance" "instance_jenkins" {
 ### backup policy
 
 resource "google_compute_resource_policy" "jenkins_snapshot_schedule" {
-  name = "jenkins-snapshot-schedule"
+  name = "nodle-chain-jenkins-snapshot-schedule"
 
   snapshot_schedule_policy {
     schedule {
