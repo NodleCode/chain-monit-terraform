@@ -16,7 +16,7 @@ terraform {
 }
 
 provider "google" {
-  #credentials = var.GOOGLE_BACKEND_CREDENTIALS
+  credentials = var.GOOGLE_BACKEND_CREDENTIALS
   project = var.project_id
   region  = var.region
   zone    = var.zone
