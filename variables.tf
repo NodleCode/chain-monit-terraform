@@ -1,7 +1,9 @@
 variable "GOOGLE_BACKEND_CREDENTIALS" {
-  type        = string
-  description = "Google credentaisl"
+ type        = string
+ default     = ""
+ description = "Google credentials"
 }
+
 variable "project_id" {
   type        = string
   default     = "nodle-chain-d08ab"
@@ -9,10 +11,12 @@ variable "project_id" {
 }
 variable "region" {
   type        = string
+  default     = "us-central1"
   description = "region of GCP to deploy the project"
 }
 variable "zone" {
   type        = string
+  default     = "us-central1-f"
   description = "zone of GCP to deploy the project"
 }
 variable "public_ssh_keys_map" {
