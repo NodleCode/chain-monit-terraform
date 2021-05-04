@@ -1,6 +1,3 @@
-
-
-
 resource "google_compute_instance_template" "nodle_chain_template" {
   name_prefix = "nodle-chain-template-"
   description = "This template is used to create app server instances."
@@ -43,7 +40,7 @@ resource "google_compute_instance_template" "nodle_chain_template" {
 }
 
 resource "google_compute_health_check" "ping_chain_monit" {
-  name = "chain-monit-ping"
+  name = "nodle-chain-monit-ping"
   # check_interval_sec  = 5
   # timeout_sec         = 5
   # healthy_threshold   = 2
@@ -57,15 +54,16 @@ resource "google_compute_health_check" "ping_chain_monit" {
 
 resource "google_compute_instance_group_manager" "chain_group_manager" {
   # Use google_compute_region_instance_group_manager to create a regional (multi-zone) instance group manager.
-  name               = "chain-group-manager"
+  name               = "nodle-chain-group-manager"
   base_instance_name = "chain"
   target_size        = "1"
 
   update_policy {
     # TODO
-    type               = "PROACTIVE"
-    minimal_action     = "REPLACE"
-    replacement_method = "SUBSTITUTE"
+    type                    = "PROACTIVE"
+    minimal_action          = "REPLACE"
+    replacement_method      = "SUBSTITUTE"
+    max_unavailable_percent = "25"
   }
   version {
     instance_template = google_compute_instance_template.nodle_chain_template.id
