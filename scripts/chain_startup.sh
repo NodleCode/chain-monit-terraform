@@ -46,7 +46,15 @@ chmod +x /usr/local/bin/nodle-chain
 systemctl daemon-reload
 systemctl start nodle-gateway
 systemctl enable nodle-gateway
-
+sleep 10
+systemctl stop nodle-gateway
+cd /home/nodle/.local/share
+wget https://storage.googleapis.com/nodle-chain-artifacts/chain-backup/latest.tar.gz
+tar xzf latest.tar.gz
+rm -f latest.tar.gz
+chown -R nodle:nodle *
+cd -
+systemctl start nodle-gateway
 # monit runner
 cat <<EOF > /lib/systemd/system/chain-monit.service
 [Unit]
