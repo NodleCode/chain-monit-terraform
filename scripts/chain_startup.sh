@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -x
 apt update
 apt upgrade -y
 groupadd -f nodle
@@ -41,7 +41,7 @@ SyslogIdentifier=gateway
 WantedBy=multi-user.target
 EOF
 cd /usr/local/bin/
-wget -O nodle-chain https://storage.googleapis.com/nodle-chain-artifacts/chain/origin/tags/${CHAIN_TAG_VERSION}
+wget -O nodle-chain https://storage.googleapis.com/nodle-chain-artifacts/chain/refs/tags/${CHAIN_TAG_VERSION}
 chmod +x /usr/local/bin/nodle-chain
 systemctl daemon-reload
 systemctl start nodle-gateway

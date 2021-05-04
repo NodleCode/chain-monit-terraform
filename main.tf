@@ -17,9 +17,9 @@ terraform {
 
 provider "google" {
   credentials = var.GOOGLE_BACKEND_CREDENTIALS
-  project = var.project_id
-  region  = var.region
-  zone    = var.zone
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
 }
 
 resource "google_compute_project_metadata" "default_project_metadata" {

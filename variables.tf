@@ -1,7 +1,7 @@
 variable "GOOGLE_BACKEND_CREDENTIALS" {
- type        = string
- default     = ""
- description = "Google credentials"
+  type        = string
+  default     = ""
+  description = "Google credentials"
 }
 
 variable "project_id" {

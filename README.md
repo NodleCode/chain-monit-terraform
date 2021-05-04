@@ -39,3 +39,12 @@
 ## Outputs
 
 No outputs.
+
+
+## Debug
+
+To debug gcp startup script
+
+``` sh
+sudo google_metadata_script_runner startup
+```
