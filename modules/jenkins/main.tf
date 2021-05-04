@@ -8,7 +8,7 @@ resource "google_compute_address" "jenkins_static_ip" {
 ### instance creation
 
 resource "google_compute_instance" "instance_jenkins" {
-  name                = "terraform-instance1"
+  name                = "nodle-chain-jenkins"
   machine_type        = "e2-standard-2"
   tags                = ["managment", "jenkins"]
   deletion_protection = true

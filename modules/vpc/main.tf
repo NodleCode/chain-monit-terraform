@@ -14,7 +14,7 @@ resource "google_compute_network" "vpc_network_zero" {
   name = "terraform-network1"
 }
 
-resource "google_compute_firewall" "default" {
+resource "google_compute_firewall" "default_network_zero" {
   name    = "nodle-firewall"
   network = google_compute_network.vpc_network_zero.name
 
