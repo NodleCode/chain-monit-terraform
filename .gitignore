@@ -1,5 +1,6 @@
 keys
 .vscode
+.env
 
 # Local .terraform directories
 **/.terraform/*
