@@ -14,7 +14,7 @@ resource "google_compute_instance_template" "nodle_chain_template" {
   #   }
 
   instance_description = "description assigned to instances"
-  machine_type         = "e2-medium"
+  machine_type         = "e2-standard-4"
   can_ip_forward       = false
 
   scheduling {
