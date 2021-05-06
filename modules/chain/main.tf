@@ -50,10 +50,10 @@ resource "google_compute_instance_template" "nodle_chain_template" {
 
 resource "google_compute_health_check" "ping_chain_monit" {
   name                = "nodle-chain-monit-ping"
-  check_interval_sec  = 30
-  timeout_sec         = 5
+  check_interval_sec  = 10
+  timeout_sec         = 10
   healthy_threshold   = 2
-  unhealthy_threshold = 2 # 60 seconds
+  unhealthy_threshold = 10 # 60 seconds
 
   http_health_check {
     request_path = "/"
