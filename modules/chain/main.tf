@@ -83,4 +83,8 @@ resource "google_compute_region_instance_group_manager" "chain_group_manager" {
     health_check      = google_compute_health_check.ping_chain_monit.id
     initial_delay_sec = 900
   }
+  named_port {
+    name = "nodle-chain-ws"
+    port = 9944
+  }
 }
