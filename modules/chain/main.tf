@@ -81,7 +81,7 @@ resource "google_compute_region_instance_group_manager" "chain_group_manager" {
 
   auto_healing_policies {
     health_check      = google_compute_health_check.ping_chain_monit.id
-    initial_delay_sec = 900
+    initial_delay_sec = 1800
   }
   named_port {
     name = "nodle-chain-ws"
