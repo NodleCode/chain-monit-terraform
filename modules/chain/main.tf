@@ -14,7 +14,7 @@ resource "google_compute_instance_template" "nodle_chain_template" {
   #   }
 
   instance_description = "description assigned to instances"
-  machine_type         = "e2-standard-4"
+  machine_type         = "e2-medium"
   can_ip_forward       = false
 
   scheduling {
@@ -65,7 +65,7 @@ resource "google_compute_region_instance_group_manager" "chain_group_manager" {
   # Use google_compute_region_instance_group_manager to create a regional (multi-zone) instance group manager.
   name               = "nodle-chain-group-manager"
   base_instance_name = "chain"
-  target_size        = "10"
+  target_size        = "5"
 
   update_policy {
     # TODO
