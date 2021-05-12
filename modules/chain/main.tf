@@ -85,6 +85,6 @@ resource "google_compute_region_instance_group_manager" "chain_group_manager" {
   }
   named_port {
     name = "nodle-chain-ws"
-    port = 9944
+    port = 9933
   }
 }
