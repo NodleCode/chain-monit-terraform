@@ -65,7 +65,7 @@ resource "google_compute_region_instance_group_manager" "chain_group_manager" {
   # Use google_compute_region_instance_group_manager to create a regional (multi-zone) instance group manager.
   name               = "nodle-chain-group-manager"
   base_instance_name = "chain"
-  target_size        = "20"
+  target_size        = "10"
 
   update_policy {
     # TODO
