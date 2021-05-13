@@ -84,7 +84,7 @@ resource "google_compute_region_instance_group_manager" "chain_group_manager" {
     initial_delay_sec = 1800
   }
   named_port {
-    name = "nodle-chain-ws"
+    name = "nodle-chain"
     port = 9933
   }
 }
