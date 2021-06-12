@@ -27,6 +27,6 @@ variable "public_ssh_keys_map" {
 }
 
 variable "chain_tag_version" {
-  default     = "2.0.7"
+  default     = "2.0.8"
   description = "Version of nodle chain to deploy"
 }
