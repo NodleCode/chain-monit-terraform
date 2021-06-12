@@ -32,7 +32,7 @@ After=network-online.target
 User=nodle
 Group=nodle
 Restart=always
-ExecStart=/usr/local/bin/nodle-chain --ws-external --rpc-cors all --chain main --name $HOSTNAME --pruning=archive --wasm-execution compiled --rpc-external
+ExecStart=/usr/local/bin/nodle-chain --ws-external --rpc-cors all --chain main --name $HOSTNAME --pruning=archive --wasm-execution compiled --rpc-external --execution native
 WorkingDirectory=/home/nodle
 KillSignal=SIGINT
 SyslogIdentifier=gateway
